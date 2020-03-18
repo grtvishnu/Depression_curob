@@ -1,12 +1,13 @@
 from flask import Flask, render_template,request,url_for
 from flask_bootstrap import Bootstrap 
-
+from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # NLP Packages
 from textblob import TextBlob,Word 
 import random 
 import time
-
+import nltk
 app = Flask(__name__)
 Bootstrap(app)
 
@@ -21,6 +22,8 @@ def analyse():
 	if request.method == 'POST':
 		rawtext = request.form['rawtext']
 		#NLP Stuff
+		analyzer = SentimentIntensityAnalyzer()
+		vs = analyzer.polarity_scores(rawtext)
 		blob = TextBlob(rawtext)
 		received_text2 = blob
 		blob_sentiment,blob_subjectivity = blob.sentiment.polarity ,blob.sentiment.subjectivity
@@ -36,12 +39,11 @@ def analyse():
 		        for item in rand_words:
 		        	word = Word(item).pluralize()
 		        	final_word.append(word)
-		        	summary = final_word
 		        	end = time.time()
 		        	final_time = end-start
 
 
-	return render_template('index.html',received_text = received_text2,number_of_tokens=number_of_tokens,blob_sentiment=blob_sentiment,blob_subjectivity=blob_subjectivity,summary=summary,final_time=final_time)
+	return render_template('index.html',received_text = vs,number_of_tokens=number_of_tokens,blob_sentiment=blob_sentiment,blob_subjectivity=blob_subjectivity)
 
 
 
