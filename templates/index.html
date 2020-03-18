@@ -34,8 +34,8 @@
 
 <div class="container">
 	<div class="jumbotron text-center">
-		<h3>Depression CuRob</h3>
-		<p>Let's make you feel better If you feel like wanting to talk to someone--</p>
+		<h3>Natural Language Processing App</h3>
+		<p>Understanding Everyday Language</p>
 	</div>
 </div>
 
@@ -43,7 +43,7 @@
 	<form method="POST" action="{{ url_for('analyse')}}" id="myForm">
 		
 
-		<label >How're you feeling today?</label>
+		<label >Enter Your Text Below</label>
     <textarea class="form-control" rows="3" cols="2" name="rawtext"></textarea>
 
     <input type="submit" onclick="myAnalyser()" value="Submit" class="btn btn-primary ">
@@ -67,7 +67,7 @@
   This text has {{number_of_tokens}} tokens with {{len_of_words}} important point
 </div> </h5>
     <div class="card-text"> 
-    	<h5>Sentimental Review</h5>
+    	<h5>Your Text</h5>
     	<p style="color:#0091EA;font-family:sans-serif;">{{ received_text }}</p>
     	<hr/>
 <br/>
