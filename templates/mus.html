@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NOTIFICATION</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            color: #333435;
+            line-height: 1.5;      
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            max-width: 400px;
+            line-height: 1.4;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #21629b;
+            font-size: 29px;    
+        }
+        p {
+            font-size: 16px;
+            margin: 15px auto;
+            text-align: center;
+            max-width: 430px;
+        }
+        a, a:visited, a:hover {
+            text-decoration: none;
+            color: #267ac3;
+        }
+        #demo-btn {
+            padding: 18px;
+            color: #fff;
+            background-color: #1E88E5;
+            outline: 0;
+            border: 0;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            opacity: 0.9;
+            border-radius: 4px;
+            margin: 45px auto;
+            display: block;
+            font-weight: bold;
+        }
+        #demo-btn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time for some music</h1>
+        <p>Music can be helpful to ease our mind, studies has shown <a href="https://www.youtube.com/watch?v=2OEL4P1Rz04" target="_blank">YouTube</a>.</p>
+
+        <button id="demo-btn">Show notification</button>
+
+
+    </div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
+<script>
+
+    Push.Permission.request();
+
+    document.getElementById('demo-btn').onclick = function () {
+        Push.create('Hi there!', {
+            body: 'lets hear some music',
+            icon: 'icon.png',
+            timeout: 80,           
+            vibrate: [100, 100, 100],
+            onClick: function() {
+
+                console.log(this);
+            }  
+        });
+    };
+
+</script>
+</html>
