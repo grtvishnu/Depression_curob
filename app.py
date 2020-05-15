@@ -54,6 +54,19 @@ def analyse():
 def route1():
     return render_template('beck.html')
 #app.run(debug = True,port = 8080,host = '0.0.0.0')
+@app.route('/doccode/')
+def doccode():
+    return render_template('doccode.html')
+
+
+@app.route('/mus/')
+def mus():
+    return render_template('mus.html')
+
+
+@app.route('/img/')
+def img():
+    return render_template('img.html')
 
 
 if __name__ == '__main__':
