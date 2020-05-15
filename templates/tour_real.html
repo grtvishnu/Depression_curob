@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<style>
+    input[type=button] {
+        background-color: LightGray;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    body {
+        background-image: url("{{url_for('static', filename='sad1.png')}}");
+        background-color: #F0F8FF;
+        height: 700px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 500px;
+        position: relative;
+    }
+</style>
+
+<body style="background-color:rgb(211, 91, 21)">
+    <div>
+        <center>
+            <p style="font-size:50px;font-family:Arial;color:white;margin-bottom: 0;margin-top: 0em;">SEEMS LIKE YOU
+                ARE BIT OFF TODAY.....LETS TAKE A QUICK TOUR</p>
+            <br>
+            <input type=button onclick="window.location.href = '{{ url_for('route1') }}';" value='GO !!'
+                style="color:black;"></input>
+        </center>
+    </div>
+
+</body>
+
+</html>
