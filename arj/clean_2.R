@@ -382,3 +382,13 @@ rm(pad2012,pad2013,pad2014,pad2015,pad2016,pad2017,pad2018,pad2019,pad2020)
 rm(pep2012,pep2013,pep2014,pep2015,pep2016,pep2017,pep2018,pep2019,pep2020)
 
 all_in_one_2 <- rbind(bana_summ,bri_summ,cab_summ,paddy_summ,pepp_summ)
+
+str(all_in_one_2)
+all_in_one_2$model_price <- as.integer(all_in_one_2$model_price)
+all_in_one_2$Commodity <- as.factor(all_in_one_2$Commodity)
+all_in_one_2$month <- as.factor(all_in_one_2$month)
+
+summary(all_in_one_2)
+
+write_csv(all_in_one_2,"all_in_one_2.csv")
+        
