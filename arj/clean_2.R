@@ -59,3 +59,43 @@ pepp<- pepp %>%
                "Max Price (Rs./Quintal)"="cphBody_GridPriceData.Max.Price..Rs..Quintal.",
                "Modal Price (Rs./Quintal)"="cphBody_GridPriceData.Modal.Price..Rs..Quintal.",
                "Price Date"="cphBody_GridPriceData.Price.Date")
+#Rename sl_no and price_date tooo
+bana <- bana %>% 
+        rename(d_name =`District Name`,mar_name=`Market Name`,min_price=`Min Price (Rs./Quintal)`,max_price=`Max Price (Rs./Quintal)`,
+               model_price=`Modal Price (Rs./Quintal)`)
+bri <- bri %>% 
+        rename(d_name =`District Name`,mar_name=`Market Name`,min_price=`Min Price (Rs./Quintal)`,max_price=`Max Price (Rs./Quintal)`,
+               model_price=`Modal Price (Rs./Quintal)`)
+cab <- cab %>% 
+        rename(d_name =`District Name`,mar_name=`Market Name`,min_price=`Min Price (Rs./Quintal)`,max_price=`Max Price (Rs./Quintal)`,
+               model_price=`Modal Price (Rs./Quintal)`)
+paddy <- paddy %>% 
+        rename(d_name =`District Name`,mar_name=`Market Name`,min_price=`Min Price (Rs./Quintal)`,max_price=`Max Price (Rs./Quintal)`,
+               model_price=`Modal Price (Rs./Quintal)`)
+pepp <- pepp %>% 
+        rename(d_name =`District Name`,mar_name=`Market Name`,min_price=`Min Price (Rs./Quintal)`,max_price=`Max Price (Rs./Quintal)`,
+               model_price=`Modal Price (Rs./Quintal)`)
+
+
+
+bana$min_price <- as.integer(bana$min_price)
+bana$max_price <- as.integer(bana$max_price)
+bana$model_price<- as.integer(bana$model_price)
+
+bri$min_price <- as.integer(bri$min_price)
+bri$max_price <- as.integer(bri$max_price)
+bri$model_price<- as.integer(bri$model_price)
+
+cab$min_price <- as.integer(cab$min_price)
+cab$max_price <- as.integer(cab$max_price)
+cab$model_price<- as.integer(cab$model_price)
+
+paddy$min_price <- as.integer(paddy$min_price)
+paddy$max_price <- as.integer(paddy$max_price)
+paddy$model_price<- as.integer(paddy$model_price)
+
+pepp$min_price <- as.integer(pepp$min_price)
+pepp$max_price <- as.integer(pepp$max_price)
+pepp$model_price<- as.integer(pepp$model_price)
+
+
