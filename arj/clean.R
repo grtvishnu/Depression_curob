@@ -5,7 +5,7 @@ library(tidyverse)
 library(lubridate)
 
 # Scrap data
-tapi<- readHTMLTable("ging.html")
+gingi<- readHTMLTable("ging.html")
 oni<- readHTMLTable("oni.html")
 poto<- readHTMLTable("poto.html")
 pum<- readHTMLTable("pum.html")
@@ -13,7 +13,7 @@ tapi<- readHTMLTable("tapi.html")
 tom<- readHTMLTable("tom.html")
 
 #convert Dataframe
-tapi <- as.data.frame(tapi)
+gingi <- as.data.frame(gingi)
 oni <- as.data.frame(oni)
 poto <- as.data.frame(poto)
 pum <- as.data.frame(pum)
@@ -170,7 +170,7 @@ head(gingi)
  tom <- tom %>% 
          rename(sl_no=`Sl no.`,d_name =`District Name`,mar_name=`Market Name`,min_price=`Min Price (Rs./Quintal)`,max_price=`Max Price (Rs./Quintal)`,
                 model_price=`Modal Price (Rs./Quintal)`)
- 
+ str(gingi)
  
 t2020 <- gingi %>% 
         filter(year==2020) %>% 
@@ -472,6 +472,13 @@ tom2012 <- tom %>%
 
 tom_summ <- rbind(tom2012,tom2013,tom2014,tom2015,tom2016,tom2017,tom2018,tom2019,tom2020)
 
+rm(tom2012,tom2013,tom2014,tom2015,tom2016,tom2017,tom2018,tom2019,tom2020)
+rm(tap2012,tap2013,tap2014,tap2015,tap2016,tap2017,tap2018,tap2019,tap2020)
+rm(pum2012,pum2013,pum2014,pum2015,pum2016,pum2017,pum2018,pum2019,pum2020)
+rm(p2012,p2013,p2014,p2015,p2016,p2017,p2018,p2019,p2020)
+rm(o2012,o2013,o2014,o2015,o2016,o2017,o2018,o2019,o2020)
+rm(t2012,t2013,t2014,t2015,t2016,t2017,t2018,t2019,t2020)
+
 main_df <- rbind(gingi_summ,
 oni_summ,
 poto_summ,
@@ -488,9 +495,57 @@ summary(main_df)
 
 write_csv(main_df,"all_in_one.csv")
 
+# Just for fun
+main_all_df <- rbind(gingi,oni,poto,pum,tapi,tom)
 
+str(main_all_df)
+colnames(main_all_df)
 
-ggplot(main_df, aes(Commodity,model_price, fill=Commodity))+
-geom_bar(stat = "identity")        
+main_all_df<- main_all_df %>% 
+        rename("Sl no."= "cphBody_GridPriceData.Sl.no.", "District Name"="cphBody_GridPriceData.District.Name",
+               "Market Name"="cphBody_GridPriceData.Market.Name", "Commodity"="cphBody_GridPriceData.Commodity",
+               "Variety"="cphBody_GridPriceData.Variety", "Grade"="cphBody_GridPriceData.Grade",
+               "Min Price (Rs./Quintal)"="cphBody_GridPriceData.Min.Price..Rs..Quintal.",
+               "Max Price (Rs./Quintal)"="cphBody_GridPriceData.Max.Price..Rs..Quintal.",
+               "Modal Price (Rs./Quintal)"="cphBody_GridPriceData.Modal.Price..Rs..Quintal.",
+               "Price Date"="cphBody_GridPriceData.Price.Date")
+main_all_df$Commodity <- as.factor(main_all_df$Commodity)
+summary(main_all_df$Commodity)
+ginger <- main_all_df %>% 
+        filter(Commodity=="Ginger(Green)")
 
-summary(main_df)
+onion <- main_all_df %>% 
+        filter(Commodity=="Onion")
+
+potato <- main_all_df %>% 
+        filter(Commodity=="Potato")
+
+pumpkin <- main_all_df %>% 
+        filter(Commodity=="Pumpkin")
+
+tapioca <- main_all_df %>% 
+        filter(Commodity=="Tapioca")
+
+tomato <- main_all_df %>% 
+        filter(Commodity=="Tomato")
+ggplot(main_all_df,aes(price_date, model_price,color=Commodity))+
+        geom_line()
+ggplot(ginger,aes(price_date, model_price,color=Commodity))+
+        geom_line()+
+        scale_y_log10()
+ggplot(onion,aes(price_date, model_price,color=Commodity))+
+        geom_line()+
+        scale_y_log10()
+ggplot(potato,aes(price_date, model_price,color=Commodity))+
+        geom_line()+
+        scale_y_log10()
+ggplot(pumpkin,aes(price_date, model_price,color=Commodity))+
+        geom_line()+
+        scale_y_log10()
+ggplot(tapioca,aes(price_date, model_price,color=Commodity))+
+        geom_line()
+ggplot(tomato,aes(price_date, model_price,color=Commodity))+
+        geom_line()
+
+tp<- tapioca %>% 
+        replace(model_price,model_price<50,NA)
