@@ -369,4 +369,8 @@ pep2012 <- pepp %>%
         summarise(model_price=mean(model_price),min_price=min(min_price),max_price =max(max_price)) %>% 
         mutate(year = 2012,Commodity="Pepper")
 
-
+bana_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
+bri_summ <- rbind(bri2012,bri2013,bri2014,bri2015,bri2016,bri2017,bri2018,bri2019,bri2020)
+cab_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
+paddy_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
+pepp_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
