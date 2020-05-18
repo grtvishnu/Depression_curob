@@ -371,6 +371,14 @@ pep2012 <- pepp %>%
 
 bana_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
 bri_summ <- rbind(bri2012,bri2013,bri2014,bri2015,bri2016,bri2017,bri2018,bri2019,bri2020)
-cab_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
-paddy_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
-pepp_summ <- rbind(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
+cab_summ <- rbind(c2012,c2013,c2014,c2015,c2016,c2017,c2018,c2019,c2020)
+paddy_summ <- rbind(pad2012,pad2013,pad2014,pad2015,pad2016,pad2017,pad2018,pad2019,pad2020)
+pepp_summ <- rbind(pep2012,pep2013,pep2014,pep2015,pep2016,pep2017,pep2018,pep2019,pep2020)
+
+rm(ba2012,ba2013,ba2014,ba2015,ba2016,ba2017,ba2018,ba2019,ba2020)
+rm(bri2012,bri2013,bri2014,bri2015,bri2016,bri2017,bri2018,bri2019,bri2020)
+rm(c2012,c2013,c2014,c2015,c2016,c2017,c2018,c2019,c2020)
+rm(pad2012,pad2013,pad2014,pad2015,pad2016,pad2017,pad2018,pad2019,pad2020)
+rm(pep2012,pep2013,pep2014,pep2015,pep2016,pep2017,pep2018,pep2019,pep2020)
+
+all_in_one_2 <- rbind(bana_summ,bri_summ,cab_summ,paddy_summ,pepp_summ)
