@@ -30,10 +30,10 @@ class User:
 
 
 users = []
-users.append(User(id=1, username='Anthony', password='password'))
-users.append(User(id=2, username='Becca', password='secret'))
-users.append(User(id=3, username='Carlos', password='somethingsimple'))
-
+users.append(User(id=1, username='grtvishnu', password='vishnuchettangreat'))
+users.append(User(id=2, username='pip', password='pipisabitch'))
+users.append(User(id=3, username='arjun', password='arjunisalsobitch'))
+users.append(User(id=4, username='lidhin', password='nutndbolt'))
 
 app = Flask(__name__)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
