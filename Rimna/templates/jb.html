@@ -1,0 +1,167 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<link rel="stylesheet" href="NEW.css" />
+
+<body>
+    <section class="hero is-success is-bold is-large">
+        <div class="hero-body">
+            <div class="container">
+                <h1 style="font-size: 80px;" class="title">
+                    Heart Disease Identifier
+                </h1>
+                <h2 style="font-size: 30px;" class="subtitle">
+                    Enter Your Info
+                </h2>
+            </div>
+        </div>
+    </section>
+    <form action="http://localhost:5000/result" method="POST">
+        <p>
+            <label for="name">Name</label><br />
+            <input class="input is-success" type="text" name="name" />
+        </p>
+
+        <br>
+        <p>
+            <label for="age">Age</label><br />
+            <input class="input is-success" type="number" name="age" />
+        </p>
+        <br>
+        <p>
+            <div class="field">
+                <label for="sex">Sex</label><br />
+                <div class="select is-success">
+                    <select name="sex" id="sex">
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <p>
+            <div class="field">
+                <label for="cp">Chest Pain</label><br />
+                <div class="select is-success">
+                    <select name="cp" id="cp">
+                        <option value="1">Typical Angina</option>
+                        <option value="2">Atypical Angina</option>
+                        <option value="3">Non- Anginal</option>
+                        <option value="4">Asymptomatic</option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <br>
+        <p>
+            <label for="trestbps">Resting Blood Pressure (mmHg)</label><br />
+            <input class="input is-success" type="number" name="trestbps" />
+        </p>
+        <br>
+        <p>
+            <label for="chol">SERUM CHOLESTEROL(mg/dl)</label><br />
+            <input class="input is-success" type="number" name="chol" />
+        </p>
+        <br>
+        <p>
+            <div class="field">
+                <label for="fbs">FASTING BLOOD SUGAR > 120 mg/dl</label><br />
+                <div class="select is-success">
+                    <select name="fbs" id="fbs">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+
+        </p>
+        <p>
+            <div class="field">
+                <label for="restecg">RESTING ECG</label><br />
+                <div class="select is-success">
+                    <select id="restecg" name="restecg">
+                        <option value="0">Normal</option>
+                        <option value="1">Abnormality </option>
+                        <option value="2">hypertrophy</option>
+                        >Showing probable or definite left ventricular hypertrophy
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <br>
+        <p>
+            <label for="thalach">MAXIMUM HEART RATE ACHIEVED</label><br />
+            <input class="input is-success" type="number" name="thalach" />
+        </p>
+        <br>
+        <p>
+            <div class="field">
+                <label for="exang">EXERCISE INDUCED ANGINA</label><br />
+                <div class="select is-success">
+                    <select name="exang" id="exang">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <br>
+        <p>
+            <label for="oldpeak">OLDPEAK</label><br />
+            <input class="input is-success" type="number" name="oldpeak" step="0.01" />
+        </p>
+        <br>
+        <p>
+            <div class="field">
+                <label for="slope">SLOPE</label><br />
+                <div class="select is-success">
+                    <select name="slope" id="slope">
+                        <option value="1">Upsloping</option>
+                        <option value="2">Flat</option>
+                        <option value="3">Downsloping</option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <p>
+            <div class="field">
+                <label for="ca">NUMBER OF MAJOR VESSELS COLORED</label><br />
+                <div class="select is-success">
+                    <select name="ca" id="ca">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <p>
+            <div class="field">
+                <label for="thal">THAL</label><br />
+                <div class="select is-success">
+                    <select id="thal" name="thal">
+                        <option value="1">Normal</option>
+                        <option value="2">Fixed Defect</option>
+                        <option value="3">Reversible Defect</option>
+                    </select>
+                </div>
+            </div>
+        </p>
+        <br>
+        <input type="submit" value="Submit" class="button is-success" />
+        <input type="reset" class="button is-success" />
+    </form>
+</body>
+<style>
+    form {
+        margin-top: 10px;
+        margin-bottom: 100px;
+        margin-right: 150px;
+        margin-left: 80px;
+    }
+</style>
+
+</html>
