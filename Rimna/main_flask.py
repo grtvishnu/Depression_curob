@@ -56,7 +56,7 @@ def result():
         if cp == "1":
             cp = "Typical Angina"
         elif cp == "2":
-            CP = "Atypical Angina"
+            cp = "Atypical Angina"
         elif cp == "3":
             cp = "Non-Anginal"
         else:
