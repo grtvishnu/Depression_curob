@@ -7,7 +7,7 @@
 <body style="background-color:rgb(19, 185, 130)"></body>>
 <div class="container" style="margin-top: 10px">
     <h1 style="font-size: 50px;" class="title">
-        Heart Disease Identifier
+        HEART DISEASE PREDICTOR
     </h1>
     <table class="table is-striped table is-bordered" width=100%>
         {% for key, value in result.items() %}
@@ -83,7 +83,7 @@
         </tbody>
         {% endfor %}
     </table>
-    <input type=button onClick="parent.location='http://127.0.0.1:5000/'" value='Retry' style="color:black;"></input>
+    <input type=button class="button is-light" onClick="parent.location='http://127.0.0.1:5000/'" value='Retry' style="color:black;"></input>
 </div>
 </body>
 

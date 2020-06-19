@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 from flask_bootstrap import Bootstrap
 from textblob import TextBlob
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -16,6 +16,9 @@ from textblob import TextBlob, Word
 import random
 import time
 import nltk
+import tensorflow.keras
+from PIL import Image, ImageOps
+import numpy as np
 app = Flask(__name__)
 
 
@@ -123,6 +126,11 @@ def mus():
 @app.route('/img/')
 def img():
     return render_template('img.html')
+
+
+@app.route('/face', methods=['GET', 'POST'])
+def face():
+    return render_template("face.html")
 
 
 if __name__ == '__main__':
