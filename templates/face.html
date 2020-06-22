@@ -13,9 +13,11 @@
     }
   </style>
   <body>
-    <div id="camera"></div>
-    <button onclick="take_snapshot()">Take Snapshot</button>
-    <div id="results"></div>
+    <form action="http://localhost:8080/face" method="POST">
+      <div id="camera"></div>
+      <button onclick="take_snapshot()">Take Snapshot</button>
+      <div id="results"></div>
+    </form>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
   <script>

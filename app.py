@@ -130,8 +130,37 @@ def img():
 
 @app.route('/face', methods=['GET', 'POST'])
 def face():
+    if request.method == 'POST':
+        f = request.files['file']
+        np.set_printoptions(suppress=True)
+
+# Load the model
+        model = tensorflow.keras.models.load_model('keras_model.h5')
+
+# Create the array of the right shape to feed into the keras model
+# The 'length' or number of images you can put into the array is
+# determined by the first position in the shape tuple, in this case 1.
+        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+        size = (224, 224)
+        image = ImageOps.fit(f, size, Image.ANTIALIAS)
+        image_array = np.asarray(image)
+        normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+        data[0] = normalized_image_array
+        prediction = model.predict(data)
+
+        if prediction[0, 0] > prediction[0, 1] and prediction[0, 0] > prediction[0, 2]:
+            print("Sad")
+        elif prediction[0, 1] > prediction[0, 0] and prediction[0, 1] > prediction[0, 2]:
+            print("Angry")
+        else:
+            print("Happy")
+
     return render_template("face.html")
 
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
+
+
+# :~:text=Flask%20%E2%80%93%20File%20Uploading&text=Handling%20file%20upload%20in%20Flask,it%20to%20the%20desired%20location.
+# https: // www.tutorialspoint.com/flask/flask_file_uploading.htm
