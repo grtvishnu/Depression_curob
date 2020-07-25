@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, jsonify
 from flask_bootstrap import Bootstrap
-from textblob import TextBlob
+from textblob import TextBlob, Word
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from flask import (
     Flask,
@@ -12,7 +12,6 @@ from flask import (
     url_for
 )
 # NLP Packages
-from textblob import TextBlob, Word
 import random
 import time
 import nltk
@@ -141,6 +140,7 @@ def face():
 # The 'length' or number of images you can put into the array is
 # determined by the first position in the shape tuple, in this case 1.
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+        #image = Image.open('test_photo.jpg')
         size = (224, 224)
         image = ImageOps.fit(f, size, Image.ANTIALIAS)
         image_array = np.asarray(image)
