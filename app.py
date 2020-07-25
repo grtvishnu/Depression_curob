@@ -130,7 +130,7 @@ def img():
 @app.route('/face', methods=['GET', 'POST'])
 def face():
     if request.method == 'POST':
-        f = request.files['file']
+        f = request.form['image']
         np.set_printoptions(suppress=True)
 
 # Load the model
@@ -149,11 +149,11 @@ def face():
         prediction = model.predict(data)
 
         if prediction[0, 0] > prediction[0, 1] and prediction[0, 0] > prediction[0, 2]:
-            print("Sad")
+            return render_template("happy.html")
         elif prediction[0, 1] > prediction[0, 0] and prediction[0, 1] > prediction[0, 2]:
-            print("Angry")
+            return render_template("happy.html")
         else:
-            print("Happy")
+            return render_template("happy.html")
 
     return render_template("face.html")
 

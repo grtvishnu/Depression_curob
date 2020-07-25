@@ -1,0 +1,41 @@
+{% block title %} Guestbook {% endblock %}
+
+{% block main %}    
+
+<div class="container">
+    <div class="row">
+    <div class="col">
+        <h1>Facetime</h1>
+        <hr>
+
+        <div id="camera"></div>
+        <button onclick="take_snapshot()">Take Snapshot</button>
+        <div id="results" name ="image"></div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+  <script>
+    Webcam.set({
+      width: 350,
+      height: 350,
+      image_format: "jpeg",
+      jpeg_quality: 90,
+    }); 
+    Webcam.attach("#camera");
+
+    function take_snapshot() {
+      // take snapshot and get image data
+      Webcam.snap(function (data_uri) {
+        // display results in page
+        document.getElementById("results").innerHTML =
+          '<img src="' + data_uri + '"/>';
+      });
+    }
+  </script>
+
+{% endblock %}

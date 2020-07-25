@@ -16,7 +16,7 @@
     <form action="http://localhost:8080/face" method="POST">
       <div id="camera"></div>
       <button onclick="take_snapshot()">Take Snapshot</button>
-      <div id="results"></div>
+      <div id="results" name ="image"></div>
     </form>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
@@ -35,6 +35,7 @@
         // display results in page
         document.getElementById("results").innerHTML =
           '<img src="' + data_uri + '"/>';
+          return data_uri
       });
     }
   </script>
