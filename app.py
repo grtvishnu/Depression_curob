@@ -134,26 +134,26 @@ def img():
 @app.route('/face2', methods=['GET', 'POST'])
 def index1():
 # Load the model
-    model = tensorflow.keras.models.load_model('keras_model.h5')
+#     model = tensorflow.keras.models.load_model('keras_model.h5')
 
-# Create the array of the right shape to feed into the keras model
-# The 'length' or number of images you can put into the array is
-# determined by the first position in the shape tuple, in this case 1.
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    #image = Image.open('test_photo.jpg')
-    size = (224, 224)
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
-    image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    data[0] = normalized_image_array
-    prediction = model.predict(data)
+# # Create the array of the right shape to feed into the keras model
+# # The 'length' or number of images you can put into the array is
+# # determined by the first position in the shape tuple, in this case 1.
+#     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+#     #image = Image.open('test_photo.jpg')
+#     size = (224, 224)
+#     image = ImageOps.fit(image, size, Image.ANTIALIAS)
+#     image_array = np.asarray(image)
+#     normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+#     data[0] = normalized_image_array
+#     prediction = model.predict(data)
 
-    if prediction[0, 0] > prediction[0, 1] and prediction[0, 0] > prediction[0, 2]:
-        return render_template("sad.html")
-    elif prediction[0, 1] > prediction[0, 0] and prediction[0, 1] > prediction[0, 2]:
-        return render_template("angry.html")
-    else:
-        return render_template("happy.html")
+#     if prediction[0, 0] > prediction[0, 1] and prediction[0, 0] > prediction[0, 2]:
+#         return render_template("sad.html")
+#     elif prediction[0, 1] > prediction[0, 0] and prediction[0, 1] > prediction[0, 2]:
+#         return render_template("angry.html")
+#     else:
+#         return render_template("happy.html")
 
     return render_template('face2.html')
 
