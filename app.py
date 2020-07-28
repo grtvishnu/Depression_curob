@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, jsonify
+from flask import Flask, render_template, request, url_for, jsonify, Response
 from flask_bootstrap import Bootstrap
 from textblob import TextBlob, Word
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -18,61 +18,59 @@ import nltk
 import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
-
-from flask import Flask, render_template, Response
 from camera import VideoCamera
 
 app = Flask(__name__)
 
 
-class User:
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
+# class User:
+#     def __init__(self, id, username, password):
+#         self.id = id
+#         self.username = username
+#         self.password = password
 
-    def __repr__(self):
-        return f'<User: {self.username}>'
-
-
-users = []
-users.append(User(id=1, username='grtvishnu', password='vishnuchettangreat'))
-users.append(User(id=2, username='pip', password='pipisabitch'))
-users.append(User(id=3, username='arjun', password='arjunisalsobitch'))
-users.append(User(id=4, username='lidhin', password='nutndbolt'))
-
-app = Flask(__name__)
-app.secret_key = 'somesecretkeythatonlyishouldknow'
+#     def __repr__(self):
+#         return f'<User: {self.username}>'
 
 
-@app.before_request
-def before_request():
-    g.user = None
+# users = []
+# users.append(User(id=1, username='grtvishnu', password='vishnuchettangreat'))
+# users.append(User(id=2, username='pip', password='pipisabitch'))
+# users.append(User(id=3, username='arjun', password='arjunisalsobitch'))
+# users.append(User(id=4, username='lidhin', password='nutndbolt'))
 
-    if 'user_id' in session:
-        user = [x for x in users if x.id == session['user_id']][0]
-        g.user = user
-
-
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        session.pop('user_id', None)
-
-        username = request.form['username']
-        password = request.form['password']
-
-        user = [x for x in users if x.username == username][0]
-        if user and user.password == password:
-            session['user_id'] = user.id
-            return redirect(url_for('index'))
-
-        return redirect(url_for('login'))
-
-    return render_template('login.html')
+# app = Flask(__name__)
+# app.secret_key = 'somesecretkeythatonlyishouldknow'
 
 
-@app.route('/main')
+# @app.before_request
+# def before_request():
+#     g.user = None
+
+#     if 'user_id' in session:
+#         user = [x for x in users if x.id == session['user_id']][0]
+#         g.user = user
+
+
+# @app.route('/', methods=['GET', 'POST'])
+# def login():
+#     if request.method == 'POST':
+#         session.pop('user_id', None)
+
+#         username = request.form['username']
+#         password = request.form['password']
+
+#         user = [x for x in users if x.username == username][0]
+#         if user and user.password == password:
+#             session['user_id'] = user.id
+#             return redirect(url_for('index'))
+
+#         return redirect(url_for('login'))
+
+#     return render_template('login.html')
+
+
+@app.route('/')
 def index():
 
     return render_template('index_back.html')
